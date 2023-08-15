@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_15_041049) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_060432) do
   create_table "business_models", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -37,6 +37,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_041049) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["id"], name: "index_companies_on_id", unique: true
+  end
+
+  create_table "company_business_models", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "business_model_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_model_id"], name: "index_company_business_models_on_business_model_id"
+    t.index ["company_id"], name: "index_company_business_models_on_company_id"
+  end
+
+  create_table "company_industries", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "industry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_industries_on_company_id"
+    t.index ["industry_id"], name: "index_company_industries_on_industry_id"
   end
 
   create_table "financial_data", force: :cascade do |t|
@@ -72,4 +90,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_041049) do
     t.index ["id"], name: "index_users_on_id", unique: true
   end
 
+  add_foreign_key "company_business_models", "business_models"
+  add_foreign_key "company_business_models", "companies"
+  add_foreign_key "company_industries", "companies"
+  add_foreign_key "company_industries", "industries"
 end
