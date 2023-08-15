@@ -41,18 +41,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_041049) do
 
   create_table "financial_data", force: :cascade do |t|
     t.integer "company_id"
-    t.integer "revenue_annualized"
-    t.integer "cash_burn_annualized"
-    t.integer "gross_profit_percentage"
-    t.integer "gross_profit_annualized"
-    t.integer "ebitda_annualized"
-    t.integer "cash_on_hands"
-    t.integer "customer_acquisition_cost"
-    t.integer "loan_to_value"
-    t.integer "annual_contract_value"
-    t.integer "average_revenue_per_user"
+    t.string "data_period"
+    t.decimal "revenue"
+    t.decimal "burn"
+    t.decimal "gp_pct"
+    t.decimal "gp_amount"
+    t.decimal "ebitda"
+    t.decimal "cash"
+    t.decimal "ltv"
+    t.integer "cac"
+    t.integer "arpu"
     t.integer "customer_count"
-    t.datetime "next_est_fundraiser"
+    t.datetime "next_fundraise"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
