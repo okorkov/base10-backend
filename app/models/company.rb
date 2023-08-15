@@ -6,5 +6,8 @@ class Company < ApplicationRecord
 
   has_many :company_industries
   has_many :industries, through: :company_industries
+
+  validates :company_name, presence: true
+  validates :company_name, uniqueness: true
 end
 

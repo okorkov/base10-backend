@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   def index
     all_companies = Company.all
-    render json: all_companies.as_json(include: [:financial_data])
+    render json: all_companies.as_json(include: [:financial_data, :business_models, :industries])
   end
   
   def show
