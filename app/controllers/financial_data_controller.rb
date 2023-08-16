@@ -1,8 +1,4 @@
 class FinancialDataController < ApplicationController
-  def show
-
-  end
-
   def create
     company = Company.find_by_id(params[:company_id])
     financial_record = FinancialDatum.new(financial_data_params)
@@ -20,10 +16,6 @@ class FinancialDataController < ApplicationController
     else
       render json: {status: 'failed', errors: financial_record.errors.full_messages}
     end
-  end
-
-  def destroy
-
   end
 
   private
